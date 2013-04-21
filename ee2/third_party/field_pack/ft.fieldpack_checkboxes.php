@@ -8,7 +8,7 @@ if (! class_exists('PT_Fieldtype'))
 
 
 /**
- * Field pack - Checkboxes Class
+ * Field Pack - Checkboxes Class
  *
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
@@ -17,7 +17,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_checkboxes_ft extends PT_Multi_Fieldtype {
 
 	var $info = array(
-		'name'     => 'Field pack - Checkboxes',
+		'name'     => 'Field Pack - Checkboxes',
 		'version'  => PT_FIELDPACK_VER
 	);
 

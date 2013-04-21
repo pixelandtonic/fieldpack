@@ -8,7 +8,7 @@ if (! class_exists('PT_Fieldtype'))
 
 
 /**
- * Field pack - Radio Buttons Class
+ * Field Pack - Radio Buttons Class
  *
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>

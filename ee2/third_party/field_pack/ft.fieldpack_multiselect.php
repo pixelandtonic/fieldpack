@@ -8,7 +8,7 @@ if (! class_exists('PT_Fieldtype'))
 
 
 /**
- * Field pack - Multi-select Class
+ * Field Pack - Multi-select Class
  *
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
@@ -17,7 +17,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_multiselect_ft extends PT_Multi_Fieldtype {
 
 	var $info = array(
-		'name'     => 'Field pack - Multiselect',
+		'name'     => 'Field Pack - Multiselect',
 		'version'  => PT_FIELDPACK_VER
 	);
 

@@ -15,7 +15,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_pill_ft extends PT_Fieldtype {
 
 	var $info = array(
-		'name'    => 'Field pack - Pill',
+		'name'    => 'Field Pack - Pill',
 		'version' => PT_FIELDPACK_VER
 	);
 

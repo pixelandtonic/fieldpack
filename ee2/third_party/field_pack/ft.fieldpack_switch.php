@@ -15,7 +15,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_switch_ft extends PT_Fieldtype {
 
 	var $info = array(
-		'name'    => "Field pack - Switch",
+		'name'    => "Field Pack - Switch",
 		'version' => PT_FIELDPACK_VER
 	);
 
