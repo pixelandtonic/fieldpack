@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>P&amp;T Field Pack Docs - P&amp;T Dropdown</title>
+	<meta name="author" content="Pixel &amp; Tonic, Inc." />
+	<meta name="viewport" content="width=1000" />
+	<link rel="stylesheet" type="text/css" href="../Resources/Styles/docs.css" />
+</head>
+
+<body class="page">
+<div id="page">
+
+	<h1>P&amp;T Dropdown</h1>
+
+	<section>
+		<h2>Configuration</h2>
+		<p>P&amp;T Dropdown has one setting, “Dropdown Options”, a single textarea in which you specify your select’s options.</p>
+
+		<p>List one option per line:</p>
+		<pre><code>Herbie Hancock
+Miles Davis
+The Beatles
+Bob Dylan</code></pre>
+
+		<p>You can optionally specify input values for each option, and organize options into <code>optgroup</code>s:</p>
+		<pre><code>Jazz
+    herbie : Herbie Hancock
+    miles : Miles Davis
+Rock
+    beatles : The Beatles
+    bobby : Bob Dylan</code></pre>
+
+		<p>You can also create a blank option by adding a blank line at the top. Or give the blank option a label:</p>
+		<pre><code> : Select one...</code></pre>
+		<p><em>(Note there’s a space before the colon.)</em></p>
+	</section>
+
+	<section>
+		<h2>Templates</h2>
+		<h3>Primary Tag</h3>
+
+		<p>Calling your P&amp;T Dropdown field with a single tag returns the selected option’s value:</p>
+		<pre><code>&lt;p&gt;I really like <em>{favorite_thing}</em>.&lt;/p&gt;</code></pre>
+
+		<h3><code>:label</code> Tag</h3>
+		<p>Returns the label of the selected option. (Only useful if you have specified the input values)</p>
+		<pre><code>&lt;p&gt;I really like &lt;a href="{favorite_thing}"&gt;{favorite_thing<em>:label</em>}&lt;/a&gt;.&lt;/p&gt;</code></pre>
+	</section>
+
+</div>
+<script type="text/javascript" src="../Resources/Scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="../Resources/Scripts/page.js"></script>
+</body>
+</html>
