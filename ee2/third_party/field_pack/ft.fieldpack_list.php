@@ -50,6 +50,7 @@ class Fieldpack_list_ft extends PT_Fieldtype {
 		$this->helper->convert_types('pt_list', 'fieldpack_list');
 		$this->helper->uninstall_fieldtype('pt_list');
 		$this->helper->convert_Low_variables('pt_list', 'fieldpack_list');
+		$this->helper->disable_extension();
 	}
 
 	// --------------------------------------------------------------------

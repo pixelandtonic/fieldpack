@@ -40,6 +40,7 @@ class Fieldpack_multiselect_ft extends PT_Multi_Fieldtype {
 
 		$this->helper->convert_types('pt_multiselect', 'fieldpack_multiselect');
 		$this->helper->uninstall_fieldtype('pt_multiselect');
+		$this->helper->disable_extension();
 
 		return array();
 	}

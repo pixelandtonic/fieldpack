@@ -47,6 +47,7 @@ class Fieldpack_switch_ft extends PT_Fieldtype {
 		$this->helper->convert_types('pt_switch', 'fieldpack_switch');
 		$this->helper->uninstall_fieldtype('pt_switch');
 		$this->helper->convert_Low_variables('pt_switch', 'fieldpack_switch');
+		$this->helper->disable_extension();
 	}
 
 	// --------------------------------------------------------------------

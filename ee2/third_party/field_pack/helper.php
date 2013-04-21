@@ -99,4 +99,13 @@ class Fieldpack_helper
 		}
 
 	}
+
+	/**
+	 * Disable extension.
+	 */
+	public function disable_extension()
+	{
+		$this->EE->db->where('class', 'Pt_field_pack_ext')->delete('extensions');
+	}
 }
+

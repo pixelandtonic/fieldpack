@@ -40,6 +40,7 @@ class Fieldpack_dropdown_ft extends PT_Multi_Fieldtype {
 
 		$this->helper->convert_types('pt_dropdown', 'fieldpack_dropdown');
 		$this->helper->uninstall_fieldtype('pt_dropdown');
+		$this->helper->disable_extension();
 
 		return array();
 	}

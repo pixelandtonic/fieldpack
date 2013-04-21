@@ -40,6 +40,7 @@ class Fieldpack_checkboxes_ft extends PT_Multi_Fieldtype {
 
 		$this->helper->convert_types('pt_checkboxes', 'fieldpack_checkboxes');
 		$this->helper->uninstall_fieldtype('pt_checkboxes');
+		$this->helper->disable_extension();
 
 		return array();
 	}

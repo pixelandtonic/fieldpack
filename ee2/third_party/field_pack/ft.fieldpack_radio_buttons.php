@@ -39,6 +39,7 @@ class Fieldpack_radio_buttons_ft extends PT_Multi_Fieldtype {
 
 		$this->helper->convert_types('pt_radio_buttons', 'fieldpack_radio_buttons');
 		$this->helper->uninstall_fieldtype('pt_radio_buttons');
+		$this->helper->disable_extension();
 
 		return array();
 	}

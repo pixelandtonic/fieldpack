@@ -47,7 +47,7 @@ class Fieldpack_pill_ft extends PT_Fieldtype {
 		$this->helper->convert_types('pt_pill', 'fieldpack_pill');
 		$this->helper->uninstall_fieldtype('pt_pill');
 		$this->helper->convert_Low_variables('pt_pill', 'fieldpack_pill');
-
+		$this->helper->disable_extension();
 	}
 
 	// --------------------------------------------------------------------
