@@ -2,7 +2,7 @@
 
 if (! class_exists('PT_Fieldtype'))
 {
-	require PATH_THIRD.'field_pack/pt_fieldtype.php';
+	require PATH_THIRD.'fieldpack/pt_fieldtype.php';
 }
 
 /**

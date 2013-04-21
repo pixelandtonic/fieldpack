@@ -3,12 +3,12 @@
 
 if (! class_exists('PT_Fieldtype'))
 {
-	require PATH_THIRD.'field_pack/pt_fieldtype.php';
+	require PATH_THIRD.'fieldpack/pt_fieldtype.php';
 }
 
 
 /**
- * Field Pack: Dropdown Class
+ * Field pack - Dropdown Class
  *
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
@@ -17,7 +17,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_dropdown_ft extends PT_Multi_Fieldtype {
 
 	var $info = array(
-		'name'     => 'Field pack: Dropdown',
+		'name'     => 'Field pack - Dropdown',
 		'version'  => PT_FIELDPACK_VER
 	);
 
@@ -33,7 +33,7 @@ class Fieldpack_dropdown_ft extends PT_Multi_Fieldtype {
 	{
 		if (! class_exists('FF2EE2'))
 		{
-			require PATH_THIRD.'field_pack/ff2ee2/ff2ee2.php';
+			require PATH_THIRD.'fieldpack/ff2ee2/ff2ee2.php';
 		}
 
 		new FF2EE2(array('ff_select', 'fieldpack_dropdown'));

@@ -4,7 +4,7 @@
 if (! defined('PT_FIELDPACK_VER'))
 {
 	// get the version from config.php
-	require PATH_THIRD.'field_pack/config.php';
+	require PATH_THIRD.'fieldpack/config.php';
 	define('PT_FIELDPACK_VER', $config['version']);
 }
 

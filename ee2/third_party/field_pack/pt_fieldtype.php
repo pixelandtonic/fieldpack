@@ -4,7 +4,7 @@
 if (! defined('PT_FIELDPACK_VER'))
 {
 	// get the version from config.php
-	require PATH_THIRD.'field_pack/config.php';
+	require PATH_THIRD.'fieldpack/config.php';
 }
 
 
@@ -29,7 +29,7 @@ class PT_Fieldtype extends EE_Fieldtype {
 	function __construct()
 	{
 		parent::__construct();
-		require_once PATH_THIRD . 'field_pack/helper.php';
+		require_once PATH_THIRD . 'fieldpack/helper.php';
 		$this->helper = new Fieldpack_helper();
 	}
 
@@ -207,7 +207,7 @@ class PT_Fieldtype extends EE_Fieldtype {
 		if (! isset($this->cache['theme_url']))
 		{
 			$theme_folder_url = defined('URL_THIRD_THEMES') ? URL_THIRD_THEMES : $this->EE->config->slash_item('theme_folder_url').'third_party/';
-			$this->cache['theme_url'] = $theme_folder_url.'field_pack/';
+			$this->cache['theme_url'] = $theme_folder_url.'fieldpack/';
 		}
 
 		return $this->cache['theme_url'];
@@ -367,7 +367,7 @@ class PT_Multi_Fieldtype extends PT_Fieldtype {
 			{
 				if (! class_exists('FF2EE2'))
 				{
-					require PATH_THIRD.'field_pack/ff2ee2/ff2ee2.php';
+					require PATH_THIRD.'fieldpack/ff2ee2/ff2ee2.php';
 				}
 
 				$data = FF2EE2::_unserialize($data);

@@ -2,7 +2,7 @@
 
 if (! class_exists('PT_Fieldtype'))
 {
-	require PATH_THIRD.'field_pack/pt_fieldtype.php';
+	require PATH_THIRD.'fieldpack/pt_fieldtype.php';
 }
 
 /**
@@ -15,7 +15,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_pill_ft extends PT_Fieldtype {
 
 	var $info = array(
-		'name'    => 'Field pack: Pill',
+		'name'    => 'Field pack - Pill',
 		'version' => PT_FIELDPACK_VER
 	);
 
