@@ -15,7 +15,7 @@ if (! class_exists('PT_Fieldtype'))
 class Fieldpack_list_ft extends PT_Fieldtype {
 
 	var $info = array(
-		'name'    => 'Fieldpack: List',
+		'name'    => 'Field Pack - List',
 		'version' => PT_FIELDPACK_VER
 	);
 
