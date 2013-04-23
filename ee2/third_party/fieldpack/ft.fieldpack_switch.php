@@ -16,7 +16,7 @@ class Fieldpack_switch_ft extends PT_Fieldtype {
 
 	var $info = array(
 		'name'    => "Field Pack - Switch",
-		'version' => PT_FIELDPACK_VER
+		'version' => FIELDPACK_VER
 	);
 
 	/**

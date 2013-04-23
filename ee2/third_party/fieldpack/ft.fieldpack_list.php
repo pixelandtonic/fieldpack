@@ -16,7 +16,7 @@ class Fieldpack_list_ft extends PT_Fieldtype {
 
 	var $info = array(
 		'name'    => 'Field Pack - List',
-		'version' => PT_FIELDPACK_VER
+		'version' => FIELDPACK_VER
 	);
 
 	// enable tag pairs

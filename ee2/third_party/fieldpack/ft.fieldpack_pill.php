@@ -16,7 +16,7 @@ class Fieldpack_pill_ft extends PT_Fieldtype {
 
 	var $info = array(
 		'name'    => 'Field Pack - Pill',
-		'version' => PT_FIELDPACK_VER
+		'version' => FIELDPACK_VER
 	);
 
 	/**

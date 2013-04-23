@@ -1,7 +1,7 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-if (! defined('PT_FIELDPACK_VER'))
+if (! defined('FIELDPACK_VER'))
 {
 	// get the version from config.php
 	require PATH_THIRD.'fieldpack/config.php';
@@ -254,7 +254,7 @@ class PT_Fieldtype extends EE_Fieldtype {
 
 /**
  * P&T Multi Fieldtype Base Class
- * 
+ *
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
