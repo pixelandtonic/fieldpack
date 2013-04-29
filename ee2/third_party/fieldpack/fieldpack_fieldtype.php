@@ -1,7 +1,7 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-if (! defined('FIELDPACK_VER'))
+if (! defined('PT_FIELDPACK_VER'))
 {
 	// get the version from config.php
 	require PATH_THIRD.'fieldpack/config.php';
@@ -15,7 +15,7 @@ if (! defined('FIELDPACK_VER'))
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
  */
-class PT_Fieldtype extends EE_Fieldtype {
+class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 	var $unserialize_data = FALSE;
 
@@ -254,12 +254,12 @@ class PT_Fieldtype extends EE_Fieldtype {
 
 /**
  * P&T Multi Fieldtype Base Class
- *
+ * 
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
  */
-class PT_Multi_Fieldtype extends PT_Fieldtype {
+class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 
 	var $default_field_settings = array(
 		'options' => array(

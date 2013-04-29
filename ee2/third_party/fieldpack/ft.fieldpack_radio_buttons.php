@@ -1,9 +1,9 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-if (! class_exists('PT_Fieldtype'))
+if (! class_exists('Fieldpack_Fieldtype'))
 {
-	require PATH_THIRD.'fieldpack/pt_fieldtype.php';
+	require PATH_THIRD.'fieldpack/fieldpack_fieldtype.php';
 }
 
 
@@ -14,7 +14,7 @@ if (! class_exists('PT_Fieldtype'))
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
  */
-class Fieldpack_radio_buttons_ft extends PT_Multi_Fieldtype {
+class Fieldpack_radio_buttons_ft extends Fieldpack_Multi_Fieldtype {
 
 	var $info = array(
 		'name'     => 'Field Pack - Radio Buttons',

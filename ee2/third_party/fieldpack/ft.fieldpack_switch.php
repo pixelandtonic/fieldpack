@@ -1,8 +1,8 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-if (! class_exists('PT_Fieldtype'))
+if (! class_exists('Fieldpack_Fieldtype'))
 {
-	require PATH_THIRD.'fieldpack/pt_fieldtype.php';
+	require PATH_THIRD.'fieldpack/fieldpack_fieldtype.php';
 }
 
 /**
@@ -12,7 +12,7 @@ if (! class_exists('PT_Fieldtype'))
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
  */
-class Fieldpack_switch_ft extends PT_Fieldtype {
+class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 
 	var $info = array(
 		'name'    => "Field Pack - Switch",
