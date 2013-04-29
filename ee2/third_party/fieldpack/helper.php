@@ -28,10 +28,13 @@ class Fieldpack_helper
 		$this->EE->db->update('channel_fields', $update, $condition);
 
 		// Convert Matrix columns
-		$update = array('col_type' => $to);
-		$condition = array('col_type' => $from);
-		$this->EE->db->update('matrix_cols', $update, $condition);
-
+		if ($this->EE->db->table_exists('matrix_cols'))
+		{
+			$update = array('col_type' => $to);
+			$condition = array('col_type' => $from);
+			$this->EE->db->update('matrix_cols', $update, $condition);
+		}
+		
 	}
 
 	/**
