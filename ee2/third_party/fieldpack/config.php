@@ -1,10 +1,10 @@
 <?php
 
-if (! defined('PT_FIELDPACK_VER'))
+if (! defined('FIELDPACK_VER'))
 {
-	define('PT_FIELDPACK_VER',  '2.0');
+	define('FIELDPACK_VER',  '2.0');
 }
 
 $config['name']    = 'P&T Field Pack';
-$config['version'] = PT_FIELDPACK_VER;
+$config['version'] = FIELDPACK_VER;
 $config['nsm_addon_updater']['versions_xml'] = 'http://pixelandtonic.com/fieldpack/releasenotes.rss';

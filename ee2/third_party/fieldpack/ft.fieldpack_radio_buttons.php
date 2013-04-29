@@ -18,7 +18,7 @@ class Fieldpack_radio_buttons_ft extends PT_Multi_Fieldtype {
 
 	var $info = array(
 		'name'     => 'Field Pack - Radio Buttons',
-		'version'  => PT_FIELDPACK_VER
+		'version'  => FIELDPACK_VER
 	);
 
 	var $class = 'fieldpack_radio_buttons';

@@ -18,7 +18,7 @@ class Fieldpack_multiselect_ft extends PT_Multi_Fieldtype {
 
 	var $info = array(
 		'name'     => 'Field Pack - Multiselect',
-		'version'  => PT_FIELDPACK_VER
+		'version'  => FIELDPACK_VER
 	);
 
 	var $class = 'multiselect';
