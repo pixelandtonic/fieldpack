@@ -143,7 +143,7 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 		// cross the T's
 		$settings['field_fmt'] = 'none';
 		$settings['field_show_fmt'] = 'n';
-		$settings['field_type'] = 'pt_switch';
+		$settings['field_type'] = 'fieldpack_switch';
 
 		return $settings;
 	}
