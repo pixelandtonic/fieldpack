@@ -241,4 +241,115 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 			return $this->settings['off_label'];
 		}
 	}
+
+	// Support for Grid Fieldtype.
+
+	/**
+	 * Display settings for Grid.
+	 *
+	 * @param $data
+	 * @return array
+	 */
+	function grid_display_settings ($data)
+	{
+		if (!empty($data['pt_switch']))
+		{
+			$data = $data['pt_switch'];
+		}
+
+		$rows = $this->_field_settings($data);
+
+		foreach ($rows as &$row)
+		{
+			// Smash it all together in a glorious HTML string
+			$out = '';
+			foreach ($row as $field)
+			{
+				$out .= $field;
+			}
+			$row = $out;
+		}
+
+		$this->_include_theme_css('styles/switch.css');
+
+		return $rows;
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Save element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function save_element_settings($settings)
+	{
+		$input_name = 'pt_switch';
+
+		if (!empty($settings[$input_name]))
+		{
+			$settings = $settings[$input_name];
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Display element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings($settings)
+	{
+		if (!empty($settings['pt_switch']))
+		{
+			$settings = $settings['pt_switch'];
+		}
+
+		$rows = $this->_field_settings($settings);
+
+		foreach ($rows as &$row)
+		{
+			// Smash it all together in a glorious HTML string
+			$out = '';
+			foreach ($row as $field)
+			{
+				$out .= $field;
+			}
+			$row = array($out);
+		}
+
+		$this->_include_theme_css('styles/switch.css');
+
+		return $rows;
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		$this->_include_theme_js('scripts/switch_ce.js');
+		return parent::display_element($data);
+	}
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		return $this->replace_tag($data, $params, preg_replace('/\{value\}/i', $data, $tagdata));
+	}
 }

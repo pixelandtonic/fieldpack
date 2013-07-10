@@ -59,8 +59,8 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 	{
 		$this->EE->table->add_row(
 			lang('fieldpack_pill_options', 'fieldpack_pill_options') . '<br />'
-			. lang('field_list_instructions') . '<br /><br />'
-			. lang('option_setting_examples'),
+				. lang('field_list_instructions') . '<br /><br />'
+				. lang('option_setting_examples'),
 
 			'<textarea id="pt_pill_options" name="pt_pill_options" rows="6">'.$this->_options_setting($data).'</textarea>'
 		);
@@ -224,5 +224,108 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 		{
 			return $this->settings['options'][$data];
 		}
+	}
+
+	// Support for Grid Fieldtype.
+
+	/**
+	 * Save Grid settings.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	public function grid_save_settings($data)
+	{
+		$input_name = 'pt_pill_options';
+		if (!empty($data[$input_name]))
+		{
+			$data[$input_name] = $this->save_options_setting($data[$input_name]);
+		}
+		return $data;
+	}
+
+	/**
+	 * Display settings for Grid.
+	 *
+	 * @param $data
+	 * @return array
+	 */
+	function grid_display_settings ($data)
+	{
+		if (!empty($data['pt_pill_options']))
+		{
+			$data['options'] = $data['pt_pill_options'];
+		}
+
+		$settings_html = $this->_get_settings_html("pt_pill_options", $this->_options_setting($data), "right") . $this->_get_label_html("fieldpack_pill_options");
+
+		return array($settings_html);
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Save Grid settings.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	public function save_element_settings($data)
+	{
+		$input_name = 'pt_pill_options';
+		if (!empty($data[$input_name]))
+		{
+			$data = array(
+				'options' => $this->save_options_setting($data[$input_name])
+			);
+		}
+		return $data;
+	}
+
+	/**
+	 * Display settings for Content Elements.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings ($settings)
+	{
+		if (!empty($settings['pt_pill_options']))
+		{
+			$settings['options'] = $settings['pt_pill_options'];
+		}
+		return array(
+			array(
+				$this->_get_label_html("fieldpack_pill_options"),
+				$this->_get_settings_html("pt_pill_options", $this->_options_setting($settings))
+			)
+		);
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		$this->_include_theme_js('scripts/pill_ce.js');
+		return $this->display_field($data);
+	}
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		return $this->replace_tag($data, $params, preg_replace('/\{value\}/i', $data, $tagdata));
 	}
 }

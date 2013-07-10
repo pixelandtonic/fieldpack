@@ -19,3 +19,20 @@ ul.pt-switch li.toggle div { position: relative; left: 0; margin: -1px; width: 2
 	background-clip: content-box; -webkit-background-clip: content-box; -moz-background-clip: content-box; }
 
 .matrix ul.pt-switch { margin: 0; }
+
+.grid_col_settings_custom_field_fieldpack_switch label,
+.ce_element_options .ce_settings_fieldpack_switch label {
+	width: 100px; float: left; display: block; line-height: 29px;
+}
+
+.grid_col_settings_custom_field_fieldpack_switch input,
+.grid_col_settings_custom_field_fieldpack_switch select,
+.ce_element_options .ce_settings_fieldpack_switch input,
+.ce_element_options .ce_settings_fieldpack_switch select {
+	width: 190px; float: left; display: block;
+}
+
+.ce_element_options .ce_settings_fieldpack_switch select,
+.grid_col_settings_custom_field_fieldpack_switch select {
+	position: relative; top: 4px;
+}

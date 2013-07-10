@@ -222,4 +222,56 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 		return $this->replace_tag($data, $params, $tagdata);
 	}
 
+	// Support for Grid Fieldtype.
+
+	/**
+	 * Display grid settings.
+	 *
+	 * @param $data
+	 * @return array
+	 */
+	function grid_display_settings ($data)
+	{
+		return array();
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Display element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings($settings)
+	{
+		return NULL;
+	}
+
+	function display_element($data)
+	{
+		$this->_include_theme_js('scripts/list_ce.js');
+		return $this->display_field($data);
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		if (is_array($data))
+		{
+			$data = join("\n", array_filter($data));
+		}
+
+		$data = $this->pre_process($data);
+		return $this->replace_tag($data, $params, $tagdata);
+	}
 }

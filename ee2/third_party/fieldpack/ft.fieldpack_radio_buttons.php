@@ -104,4 +104,19 @@ class Fieldpack_radio_buttons_ft extends Fieldpack_Multi_Fieldtype {
 		return $this->settings['options'][$data];
 	}
 
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		$value = $this->replace_tag($data);
+		return preg_replace('/\{value\}/i', $value, $tagdata);
+	}
 }

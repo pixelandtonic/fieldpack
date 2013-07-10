@@ -13,6 +13,11 @@ var $document = $(document),
 
 ptSwitch = function($select){
 
+    if ($select.length == 0)
+    {
+        return;
+    }
+
 	$select.hide();
 
 	var obj = this,

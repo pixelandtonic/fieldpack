@@ -21,6 +21,8 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 	var $has_array_data = TRUE;
 
+	var $class = 'fieldpack_generic';
+
 	/**
 	 * @var Fieldpack_helper
 	 */
@@ -246,6 +248,178 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 	{
 		$this->EE->cp->add_to_foot('<script type="text/javascript">'.$js.'</script>');
 	}
+
+	/**
+	 * Construct the settings HTML.
+	 *
+	 * @param $input_name
+	 * @param $options
+	 * @param $html_class
+	 * @return string
+	 */
+	protected function _get_settings_html($input_name, $options = "", $html_class = "")
+	{
+		return '<textarea id="'.$input_name.'" name="'.$input_name.'" rows="6" class="' . $html_class . '">' . $options . '</textarea>';
+	}
+
+	/**
+	 * Construct the label HTML.
+	 *
+	 * @param $input_name
+	 * @return string
+	 */
+	protected function _get_label_html($input_name)
+	{
+		return form_label(lang($input_name, $input_name)) . '<br/>'
+			. '<i class="instruction_text">' . lang('field_list_instructions') . '</i><br /><br />' . lang('option_setting_examples');
+	}
+	// Support for Grid Fieldtype.
+
+	/**
+	 * Display settings for Grid.
+	 *
+	 * @param $data
+	 * @return array
+	 */
+	public function grid_display_settings($data)
+	{
+		$this->EE->lang->loadfile('fieldpack');
+
+		$input_name = $this->class.'_options';
+
+		$options = isset($data[$input_name]) ? $data[$input_name] : array();
+
+		$settings_html = $this->_get_settings_html($input_name, $this->options_setting($options), "right") . $this->_get_label_html($input_name);
+
+		return array($settings_html);
+	}
+
+	/**
+	 * Modify settings column for Grid fieldtype.
+	 *
+	 * @param $data
+	 * @return array
+	 */
+	public function grid_settings_modify_column ($data)
+	{
+		return array('col_id_'.$data['col_id'] =>
+			array(
+				'type' 			=> 'TEXT',
+				'default'		=> NULL
+			)
+		);
+	}
+
+	/**
+	 * Save Grid settings.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	public function grid_save_settings($data)
+	{
+		$input_name = $this->class.'_options';
+		if (!empty($data[$input_name]))
+		{
+			$data[$input_name] = $this->save_options_setting($data[$input_name]);
+		}
+		return $data;
+	}
+
+	// Support for Content Elements Fieldtype
+
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		return $this->display_field($data);
+	}
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		return $this->replace_tag($data, $params, $tagdata);
+	}
+
+	/**
+	 * Display element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings($settings)
+	{
+		$input_name = $this->class.'_options';
+
+		if (isset($settings[$input_name]))
+		{
+			$settings = $settings[$input_name];
+		}
+
+		if (!empty($settings['options']))
+		{
+			$settings = $settings['options'];
+		}
+
+		return array(
+			array(
+				$this->_get_label_html($input_name),
+				$this->_get_settings_html($input_name, $this->options_setting($settings))
+			)
+		);
+	}
+
+	/**
+	 * Save element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function save_element_settings($settings)
+	{
+		$input_name = $this->class.'_options';
+
+		if (!empty($settings[$input_name]))
+		{
+			return array(
+				'options' => $this->save_options_setting($settings[$input_name])
+			);
+		}
+
+		return $settings;
+	}
+
+	/*
+	function validate_element($data)
+	{
+
+	}
+
+	function save_element($data)
+	{
+
+	}
+
+	function post_save_element($data)
+	{
+
+	}
+
+	function preview_element($data)
+	{
+
+	}*/
 }
 
 
@@ -293,16 +467,15 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 		// load the language file
 		$this->EE->lang->loadfile('fieldpack');
 
-		$options = isset($data['options']) ? $data['options'] : array();
 		$input_name = $this->class.'_options';
+		$options = isset($data['options']) ? $data['options'] : array();
 
 		$this->EE->table->add_row(
 			lang($this->class.'_options', $input_name) . '<br />'
-			. lang('field_list_instructions') . '<br /><br />'
-			. lang('option_setting_examples'),
+				. lang('field_list_instructions') . '<br /><br />'
+				. lang('option_setting_examples'),
 
-			'<textarea id="'.$input_name.'" name="'.$input_name.'" rows="6">'.$this->options_setting($options).'</textarea>'
-		);
+			'<textarea id="'.$input_name.'" name="'.$input_name.'" rows="6">'.$this->options_setting($options).'</textarea>');
 	}
 
 	/**
