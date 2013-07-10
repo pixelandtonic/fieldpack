@@ -21,7 +21,7 @@ class Fieldpack_multiselect_ft extends Fieldpack_Multi_Fieldtype {
 		'version'  => FIELDPACK_VER
 	);
 
-	var $class = 'multiselect';
+	var $class = 'fieldpack_multiselect';
 	var $total_option_levels = 2;
 
 	// --------------------------------------------------------------------
@@ -81,4 +81,21 @@ class Fieldpack_multiselect_ft extends Fieldpack_Multi_Fieldtype {
 		return $this->save($data);
 	}
 
+	/**
+	 * Validate
+	 */
+	function validate($data)
+	{
+		// is this a required field?
+		if ($this->settings['field_required'] == 'y' && $data =='n' )
+		{
+			// make sure there are selections
+			if (! $data)
+			{
+				return $this->EE->lang->line('required');
+			}
+		}
+
+		return TRUE;
+	}
 }
