@@ -12,7 +12,12 @@ var $document = $(document);
 
 ptPill = function($select){
 
-	$select.hide();
+    if ($select.length == 0)
+    {
+        return;
+    }
+
+    $select.hide();
 
 	var obj = this,
 		$options = $('option', $select),
