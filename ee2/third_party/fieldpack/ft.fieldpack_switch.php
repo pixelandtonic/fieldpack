@@ -242,39 +242,6 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 		}
 	}
 
-	// Support for Grid Fieldtype.
-
-	/**
-	 * Display settings for Grid.
-	 *
-	 * @param $data
-	 * @return array
-	 */
-	function grid_display_settings ($data)
-	{
-		if (!empty($data['pt_switch']))
-		{
-			$data = $data['pt_switch'];
-		}
-
-		$rows = $this->_field_settings($data);
-
-		foreach ($rows as &$row)
-		{
-			// Smash it all together in a glorious HTML string
-			$out = '';
-			foreach ($row as $field)
-			{
-				$out .= $field;
-			}
-			$row = $out;
-		}
-
-		$this->_include_theme_css('styles/switch.css');
-
-		return $rows;
-	}
-
 	// Support for Content Elements Fieldtype
 
 	/**

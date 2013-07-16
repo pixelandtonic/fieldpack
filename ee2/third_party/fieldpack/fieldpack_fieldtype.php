@@ -273,58 +273,6 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		return form_label(lang($input_name, $input_name)) . '<br/>'
 			. '<i class="instruction_text">' . lang('field_list_instructions') . '</i><br /><br />' . lang('option_setting_examples');
 	}
-	// Support for Grid Fieldtype.
-
-	/**
-	 * Display settings for Grid.
-	 *
-	 * @param $data
-	 * @return array
-	 */
-	public function grid_display_settings($data)
-	{
-		$this->EE->lang->loadfile('fieldpack');
-
-		$input_name = $this->class.'_options';
-
-		$options = isset($data[$input_name]) ? $data[$input_name] : array();
-
-		$settings_html = $this->_get_settings_html($input_name, $this->options_setting($options), "right") . $this->_get_label_html($input_name);
-
-		return array($settings_html);
-	}
-
-	/**
-	 * Modify settings column for Grid fieldtype.
-	 *
-	 * @param $data
-	 * @return array
-	 */
-	public function grid_settings_modify_column ($data)
-	{
-		return array('col_id_'.$data['col_id'] =>
-			array(
-				'type' 			=> 'TEXT',
-				'default'		=> NULL
-			)
-		);
-	}
-
-	/**
-	 * Save Grid settings.
-	 *
-	 * @param $data
-	 * @return mixed
-	 */
-	public function grid_save_settings($data)
-	{
-		$input_name = $this->class.'_options';
-		if (!empty($data[$input_name]))
-		{
-			$data[$input_name] = $this->save_options_setting($data[$input_name]);
-		}
-		return $data;
-	}
 
 	// Support for Content Elements Fieldtype
 

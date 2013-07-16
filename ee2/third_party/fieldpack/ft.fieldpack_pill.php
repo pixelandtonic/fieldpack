@@ -226,42 +226,6 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 		}
 	}
 
-	// Support for Grid Fieldtype.
-
-	/**
-	 * Save Grid settings.
-	 *
-	 * @param $data
-	 * @return mixed
-	 */
-	public function grid_save_settings($data)
-	{
-		$input_name = 'pt_pill_options';
-		if (!empty($data[$input_name]))
-		{
-			$data[$input_name] = $this->save_options_setting($data[$input_name]);
-		}
-		return $data;
-	}
-
-	/**
-	 * Display settings for Grid.
-	 *
-	 * @param $data
-	 * @return array
-	 */
-	function grid_display_settings ($data)
-	{
-		if (!empty($data['pt_pill_options']))
-		{
-			$data['options'] = $data['pt_pill_options'];
-		}
-
-		$settings_html = $this->_get_settings_html("pt_pill_options", $this->_options_setting($data), "right") . $this->_get_label_html("fieldpack_pill_options");
-
-		return array($settings_html);
-	}
-
 	// Support for Content Elements Fieldtype
 
 	/**

@@ -222,18 +222,6 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 		return $this->replace_tag($data, $params, $tagdata);
 	}
 
-	// Support for Grid Fieldtype.
-
-	/**
-	 * Display grid settings.
-	 *
-	 * @param $data
-	 * @return array
-	 */
-	function grid_display_settings ($data)
-	{
-		return array();
-	}
 
 	// Support for Content Elements Fieldtype
 
