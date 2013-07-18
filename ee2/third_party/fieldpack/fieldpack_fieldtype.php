@@ -44,26 +44,30 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 	{
 		$r = '';
 
-		foreach ($options as $name => $label)
+		if (is_array($options))
 		{
-			if ($r !== '') $r .= "\n";
 
-			// force string
-			$name = (string) $name;
-
-			// is this just a blank option?
-			if ($name === '' && $label === '') $name = $label = ' ';
-
-			$r .= $indent . htmlentities($name, ENT_COMPAT, 'UTF-8');
-
-			// is this an optgroup?
-			if (is_array($label))
+			foreach ($options as $name => $label)
 			{
-				$r .= "\n".$this->options_setting($label, $indent.'    ');
-			}
-			else if ($name !== (string) $label)
-			{
-				$r .= ' : '.$label;
+				if ($r !== '') $r .= "\n";
+
+				// force string
+				$name = (string) $name;
+
+				// is this just a blank option?
+				if ($name === '' && $label === '') $name = $label = ' ';
+
+				$r .= $indent . htmlentities($name, ENT_COMPAT, 'UTF-8');
+
+				// is this an optgroup?
+				if (is_array($label))
+				{
+					$r .= "\n".$this->options_setting($label, $indent.'    ');
+				}
+				else if ($name !== (string) $label)
+				{
+					$r .= ' : '.$label;
+				}
 			}
 		}
 
