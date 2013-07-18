@@ -203,7 +203,7 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 			$this->settings['on_val'] => $this->settings['on_label']
 		);
 
-		if ($new)
+		if ($new && !$data)
 		{
 			if (! isset($this->settings['default'])) $this->settings['default'] = 'off';
 			$data = $this->settings[$this->settings['default'].'_val'];
