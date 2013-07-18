@@ -184,7 +184,8 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 		$field_name = $cell ? $this->cell_name : $this->field_name;
 		$field_id = str_replace(array('[', ']'), array('_', ''), $field_name);
 
-		if (! $cell)
+		// Don't initialize this for Content Element templates and Matrix cells
+		if (! $cell && $field_id != '__element_name_____index___data')
 		{
 			$this->_insert_js('new ptPill(jQuery("#'.$field_id.'"));');
 		}

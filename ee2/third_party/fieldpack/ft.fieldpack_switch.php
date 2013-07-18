@@ -184,7 +184,12 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 		else
 		{
 			$new = (! $this->EE->input->get('entry_id') && substr($field_name, 0, 3) != 'var');
-			$this->_insert_js('new ptSwitch(jQuery("#'.$field_id.'"));');
+
+			// Don't initialize this for Content Element templates
+			if ($field_id != '__element_name_____index___data')
+			{
+				$this->_insert_js('new ptSwitch(jQuery("#'.$field_id.'"));');
+			}
 		}
 
 		// Pretend it's a new entry if $data isn't set to one of the values
@@ -241,6 +246,8 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 			return $this->settings['off_label'];
 		}
 	}
+
+
 
 	// Support for Content Elements Fieldtype
 
