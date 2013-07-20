@@ -52,7 +52,6 @@ class Fieldpack_multiselect_ft extends Fieldpack_Multi_Fieldtype {
 	 */
 	function _display_field($data, $field_name)
 	{
-		global $DSP;
 
 		$this->prep_field_data($data);
 
