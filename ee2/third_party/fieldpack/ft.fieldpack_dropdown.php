@@ -65,6 +65,11 @@ class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 	 */
 	function _display_field($data, $field_name)
 	{
+		if (empty($this->settings['options']))
+		{
+			return $this->no_options_set();
+		}
+
 		$this->prep_field_data($data);
 
 		return form_dropdown($field_name, $this->settings['options'], $data);

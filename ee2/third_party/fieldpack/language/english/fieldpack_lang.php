@@ -13,6 +13,7 @@ $lang = array(
 'fieldpack_switch_off_label' => 'OFF Label',
 'fieldpack_switch_off_val'   => 'OFF Value',
 'fieldpack_switch_default'   => 'Default Position',
+'no_options_set' => 'You haven&rsquo;t set any options yet.',
 
 'option_setting_examples' => '<i>ex 1:</i>  <code style="font-size:0.9em">Option Label</code><br/>'
                            . '<i>ex 2:</i>  <code style="font-size:0.9em">option_name : Option Label</code>',

@@ -178,6 +178,11 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 	 */
 	function display_field($data, $cell = FALSE)
 	{
+		if (empty($this->settings['options']))
+		{
+			return $this->no_options_set();
+		}
+
 		$this->_include_theme_css('styles/pill.css');
 		$this->_include_theme_js('scripts/pill.js');
 

@@ -352,6 +352,19 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		return $settings;
 	}
 
+	/**
+	 * Outputs a message about how no options are set yet.
+	 *
+	 * @access protected
+	 * @return string
+	 */
+	protected function no_options_set()
+	{
+		ee()->lang->loadfile('fieldpack');
+		return '<p>'.lang('no_options_set').'</p>';
+	}
+
+
 	/*
 	function validate_element($data)
 	{
@@ -380,7 +393,7 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 /**
  * P&T Multi Fieldtype Base Class
- * 
+ *
  * @package   P&T Field Pack
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
