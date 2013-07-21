@@ -243,6 +243,17 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		}
 	}
 
+	/**
+	 * Includes an icon for Content Elements.
+	 */
+	protected function _include_ce_icon($icon)
+	{
+		if (!isset($this->cache['icons']) || !in_array($icon, $this->cache['icons']))
+		{
+			$this->EE->cp->add_to_head('<style type="text/css">.content_elements_icon_fieldpack_'.$icon.' { background: url('.$this->_theme_url().'images/icons/'.$icon.'.png); background-size: 16px; }</style>');
+		}
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -279,17 +290,6 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 	}
 
 	// Support for Content Elements Fieldtype
-
-	/**
-	 * Display the element.
-	 *
-	 * @param $data
-	 * @return mixed
-	 */
-	function display_element($data)
-	{
-		return $this->display_field($data);
-	}
 
 	/**
 	 * Render the element.

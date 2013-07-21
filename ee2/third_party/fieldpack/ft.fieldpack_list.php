@@ -238,6 +238,7 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 
 	function display_element($data)
 	{
+		$this->_include_ce_icon('list');
 		$this->_include_theme_js('scripts/list_ce.js');
 		return $this->display_field($data);
 	}

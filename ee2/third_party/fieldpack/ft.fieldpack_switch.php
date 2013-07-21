@@ -310,8 +310,9 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 	 */
 	function display_element($data)
 	{
+		$this->_include_ce_icon('switch');
 		$this->_include_theme_js('scripts/switch_ce.js');
-		return parent::display_element($data);
+		return $this->display_field($data);
 	}
 
 	/**

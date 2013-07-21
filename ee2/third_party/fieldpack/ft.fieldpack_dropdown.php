@@ -85,6 +85,18 @@ class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 		return $this->_display_field($data, $this->cell_name);
 	}
 
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		$this->_include_ce_icon('dropdown');
+		return $this->display_field($data);
+	}
+
 
 	// --------------------------------------------------------------------
 

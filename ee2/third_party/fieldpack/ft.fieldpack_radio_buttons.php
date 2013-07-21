@@ -85,6 +85,18 @@ class Fieldpack_radio_buttons_ft extends Fieldpack_Multi_Fieldtype {
 		return $r;
 	}
 
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		$this->_include_ce_icon('radio_buttons');
+		return $this->display_field($data);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**

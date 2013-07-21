@@ -65,6 +65,18 @@ class Fieldpack_multiselect_ft extends Fieldpack_Multi_Fieldtype {
 		return $r;
 	}
 
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		$this->_include_ce_icon('multiselect');
+		return $this->display_field($data);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**

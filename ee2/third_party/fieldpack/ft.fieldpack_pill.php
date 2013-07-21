@@ -282,6 +282,7 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 	 */
 	function display_element($data)
 	{
+		$this->_include_ce_icon('pill');
 		$this->_include_theme_js('scripts/pill_ce.js');
 		return $this->display_field($data);
 	}
