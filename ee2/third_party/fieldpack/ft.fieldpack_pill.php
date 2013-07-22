@@ -297,9 +297,21 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 	 */
 	function replace_element_tag($data, $params = array(), $tagdata)
 	{
-		$data = array(
-			'value' => $data
+		$label = $data;
+
+		// Defensively load label value
+		if (isset($this->settings['options'][$data]))
+		{
+			$label = $this->settings['options'][$data];
+		}
+
+		$value = $data;
+
+		$replace = array(
+			'value' => $value,
+			'label' => $label
 		);
-		return $this->EE->functions->var_swap($tagdata, $data);
+
+		return $this->EE->functions->var_swap($tagdata, $replace);
 	}
 }
