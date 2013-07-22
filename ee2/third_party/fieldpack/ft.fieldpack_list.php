@@ -56,6 +56,19 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Display element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings($settings)
+	{
+		return NULL;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Display Field
 	 */
 	function display_field($data, $cell = FALSE)
@@ -106,6 +119,16 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 	 */
 	function display_var_field($data)
 	{
+		return $this->display_field($data);
+	}
+
+	/**
+	 * Display Element
+	 */
+	function display_element($data)
+	{
+		$this->_include_ce_icon('list');
+		$this->_include_theme_js('scripts/list_ce.js');
 		return $this->display_field($data);
 	}
 
@@ -194,6 +217,8 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 		return $r;
 	}
 
+	// --------------------------------------------------------------------
+
 	/**
 	 * Replace UL
 	 */
@@ -214,6 +239,8 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 		     . '</ol>';
 	}
 
+	// --------------------------------------------------------------------
+
 	/**
 	 * Display Variable tag
 	 */
@@ -221,29 +248,6 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 	{
 		return $this->replace_tag($data, $params, $tagdata);
 	}
-
-
-	// Support for Content Elements Fieldtype
-
-	/**
-	 * Display element's settings.
-	 *
-	 * @param $settings
-	 * @return array
-	 */
-	function display_element_settings($settings)
-	{
-		return NULL;
-	}
-
-	function display_element($data)
-	{
-		$this->_include_ce_icon('list');
-		$this->_include_theme_js('scripts/list_ce.js');
-		return $this->display_field($data);
-	}
-
-	// Support for Content Elements Fieldtype
 
 	/**
 	 * Render the element.
