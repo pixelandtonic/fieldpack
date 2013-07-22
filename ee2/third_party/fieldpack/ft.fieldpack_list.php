@@ -261,6 +261,29 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 		}
 
 		$data = $this->pre_process($data);
-		return $this->replace_tag($data, $params, $tagdata);
+		$data['item'] = $data;
+
+		if (preg_match_all('/(\{values(\s.*?)?\}(.*)\{\/values\})/', $tagdata, $matches))
+		{
+			foreach ($matches[1] as $index => $matched_markup)
+			{
+				$params = array();
+				if (!empty($matches[2][$index]))
+				{
+					$parameters = array_filter(preg_split("/\s/", $matches[2][$index]));
+					foreach ($parameters as $parameter)
+					{
+						if (strpos($parameter, '='))
+						{
+							list ($key, $value) = explode("=", $parameter);
+							$params[$key] = $value;
+						}
+					}
+				}
+				$tagdata = str_replace($matches[1][$index], $this->replace_tag($data, $params, $matches[3][$index]), $tagdata);
+			}
+		}
+
+		return $tagdata;
 	}
 }
