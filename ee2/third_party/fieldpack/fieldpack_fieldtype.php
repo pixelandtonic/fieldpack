@@ -30,6 +30,7 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 	function __construct()
 	{
+		ee()->lang->loadfile('fieldpack');
 		parent::__construct();
 		require_once PATH_THIRD . 'fieldpack/helper.php';
 		$this->helper = new Fieldpack_helper();
@@ -360,7 +361,6 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 	 */
 	protected function no_options_set()
 	{
-		ee()->lang->loadfile('fieldpack');
 		return '<p>'.lang('no_options_set').'</p>';
 	}
 }
