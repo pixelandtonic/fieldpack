@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
 	<meta charset="utf-8" />
-	<title>Configuration - Field Pack Docs</title>
+	<title>Content Elements Tags - Field Pack Docs</title>
 	<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
 	<link rel="stylesheet" href="../../_static/css/docs.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,13 +29,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../dropdown/index.html">Dropdown</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../list/index.html">List</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../multiselect/index.html">Multiselect</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pill/index.html">Pill</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">Radio Buttons</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="">Configuration</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Pill</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tags.html">Field Tags</a></li>
-<li class="toctree-l4"><a class="reference internal" href="element_tags.html">Content Elements Tags</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">Content Elements Tags</a><ul class="simple">
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../radiobuttons/index.html">Radio Buttons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../switch/index.html">Switch</a></li>
 </ul>
 </li>
@@ -52,28 +54,28 @@
 				<ul id="crumbs">
 					<li><a href="../../index.html">Field Pack Docs</a></li>
 					<li><a href="../index.html">Bundled Fieldtypes</a></li>
-					<li><a href="index.html">Radio Buttons</a></li>
+					<li><a href="index.html">Pill</a></li>
 				</ul>
 			
 
 			
-  <div class="section" id="configuration">
-<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
-<p>Radio Buttons has one setting, “Radio Button Options”, a
-textarea in which you specify each radio option you want as part of the
-group.</p>
-<p>List one option per line:</p>
-<div class="highlight-html"><div class="highlight"><pre>Herbie Hancock
-Bob Dylan
-The Bad Plus
+  <div class="section" id="content-elements-tags">
+<h1>Content Elements Tags<a class="headerlink" href="#content-elements-tags" title="Permalink to this headline">¶</a></h1>
+<p>If you want to use a Pill field within <a class="reference external" href="http://www.krea.com/content-elements">Content Elements</a>, use the following template:</p>
+<div class="highlight-html"><div class="highlight"><pre>{fieldpack_pill}
+    {value}
+{/fieldpack_pill}
 </pre></div>
 </div>
-<p>You can optionally specify each option’s value separately from its
-label:</p>
-<div class="highlight-html"><div class="highlight"><pre>herbie : Herbie Hancock
-bobby : Bob Dylan
-tbp : The Bad Plus
-</pre></div>
+<div class="section" id="variable-tags">
+<h2>Variable Tags<a class="headerlink" href="#variable-tags" title="Permalink to this headline">¶</a></h2>
+<p>The following variable tags are available within the <tt class="docutils literal"><span class="pre">{fieldpack_pill}</span></tt> tag pair:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">{option}</span></tt></dt>
+<dd>The selected option’s value.</dd>
+<dt><tt class="docutils literal"><span class="pre">{label}</span></tt></dt>
+<dd>The selected option’s label.</dd>
+</dl>
 </div>
 </div>
 
@@ -81,7 +83,7 @@ tbp : The Bad Plus
 
 			
 			<nav id="next">
-				Next up: <a href="tags.html">Field Tags</a></li>
+				Next up: <a href="../radiobuttons/index.html">Radio Buttons</a></li>
 			</nav>
 			
 		</div>

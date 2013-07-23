@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
 	<meta charset="utf-8" />
-	<title>Pill - Field Pack Docs</title>
+	<title>Content Elements Tags - Field Pack Docs</title>
 	<link rel="stylesheet" href="../../_static/pygments.css" type="text/css">
 	<link rel="stylesheet" href="../../_static/css/docs.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,13 +28,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../checkboxes/index.html">Checkboxes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dropdown/index.html">Dropdown</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../list/index.html">List</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../multiselect/index.html">Multiselect</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="">Pill</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Multiselect</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tags.html">Field Tags</a></li>
-<li class="toctree-l4"><a class="reference internal" href="element_tags.html">Content Elements Tags</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="">Content Elements Tags</a><ul class="simple">
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pill/index.html">Pill</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../radiobuttons/index.html">Radio Buttons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../switch/index.html">Switch</a></li>
 </ul>
@@ -52,22 +54,45 @@
 				<ul id="crumbs">
 					<li><a href="../../index.html">Field Pack Docs</a></li>
 					<li><a href="../index.html">Bundled Fieldtypes</a></li>
+					<li><a href="index.html">Multiselect</a></li>
 				</ul>
 			
 
 			
-  <div class="section" id="pill">
-<h1>Pill<a class="headerlink" href="#pill" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tags.html">Field Tags</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="element_tags.html">Content Elements Tags</a><ul class="simple">
-</ul>
-</li>
-</ul>
+  <div class="section" id="content-elements-tags">
+<h1>Content Elements Tags<a class="headerlink" href="#content-elements-tags" title="Permalink to this headline">¶</a></h1>
+<p>If you want to use a Multiselect field within <a class="reference external" href="http://www.krea.com/content-elements">Content Elements</a>, use the following template:</p>
+<div class="highlight-html"><div class="highlight"><pre>{fieldpack_multiselect}
+    {values}
+        <span class="nt">&lt;li&gt;</span>{option}<span class="nt">&lt;/li&gt;</span>
+    {/values}
+{/fieldpack_multiselect}
+</pre></div>
+</div>
+<div class="section" id="tag-parameters">
+<h2>Tag Parameters<a class="headerlink" href="#tag-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">{values}</span></tt> tag pair supports the following parameters:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">sort</span></tt></dt>
+<dd>Sorts the selected options alphabetically. Can be set to either “<tt class="docutils literal"><span class="pre">asc</span></tt>” or “<tt class="docutils literal"><span class="pre">desc</span></tt>”.</dd>
+<dt><tt class="docutils literal"><span class="pre">backspace</span></tt></dt>
+<dd>Strips the last <em>X</em> characters from the tag output.</dd>
+</dl>
+</div>
+<div class="section" id="variable-tags">
+<h2>Variable Tags<a class="headerlink" href="#variable-tags" title="Permalink to this headline">¶</a></h2>
+<p>The following variable tags are available within the <tt class="docutils literal"><span class="pre">{values}</span></tt> tag pair:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">{count}</span></tt></dt>
+<dd>The current option’s index.</dd>
+<dt><tt class="docutils literal"><span class="pre">{option}</span></tt></dt>
+<dd>The current option’s value.</dd>
+<dt><tt class="docutils literal"><span class="pre">{option_name}</span></tt></dt>
+<dd>If you specified a label for your option, this is how you access it.
+Otherwise, it will return the same thing as <tt class="docutils literal"><span class="pre">{option}</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">switch</span></tt></dt>
+<dd>Switch between multiple values based on the current option index.</dd>
+</dl>
 </div>
 </div>
 
@@ -75,7 +100,7 @@
 
 			
 			<nav id="next">
-				Next up: <a href="config.html">Configuration</a></li>
+				Next up: <a href="../pill/index.html">Pill</a></li>
 			</nav>
 			
 		</div>

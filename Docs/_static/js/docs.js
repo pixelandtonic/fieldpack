@@ -51,17 +51,11 @@ if (typeof document.querySelectorAll != 'undefined')
 		}
 	}
 
-	var dls = document.getElementsByTagName('dl');
+	var dls = document.querySelectorAll('dl.collapsible');
 
 	for (var i = 0; i < dls.length; i++)
 	{
 		var dl = dls[i];
-
-		// Make sure it's not a nested DL
-		if (dl.parentNode.nodeName == 'DD')
-		{
-			continue;
-		}
 
 		// Add the toggle all buttons
 		var toggleAll = document.createElement('div');
