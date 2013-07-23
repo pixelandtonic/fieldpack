@@ -124,27 +124,6 @@ class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 	}
 
 	/**
-	 * Find Label
-	 */
-	private function _find_label($data, $options)
-	{
-		foreach($options as $name => $label)
-		{
-			if (is_array($label) && ($sublabel = $this->_find_label($data, $label)) !== FALSE)
-			{
-				return $sublabel;
-			}
-			else if ((string) $data === (string) $name)
-			{
-				return $label;
-			}
-		}
-		return FALSE;
-	}
-
-	// Support for Content Elements Fieldtype
-
-	/**
 	 * Render the element.
 	 *
 	 * @param $data
@@ -170,5 +149,24 @@ class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 		);
 
 		return $this->EE->functions->var_swap($tagdata, $replace);
+	}
+
+	/**
+	 * Find Label
+	 */
+	private function _find_label($data, $options)
+	{
+		foreach($options as $name => $label)
+		{
+			if (is_array($label) && ($sublabel = $this->_find_label($data, $label)) !== FALSE)
+			{
+				return $sublabel;
+			}
+			else if ((string) $data === (string) $name)
+			{
+				return $label;
+			}
+		}
+		return FALSE;
 	}
 }
