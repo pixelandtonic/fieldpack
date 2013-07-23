@@ -74,6 +74,34 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		return $r;
 	}
 
+	/**
+	 * Display element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings($settings)
+	{
+		$input_name = $this->class.'_options';
+
+		if (isset($settings[$input_name]))
+		{
+			$settings = $settings[$input_name];
+		}
+
+		if (!empty($settings['options']))
+		{
+			$settings = $settings['options'];
+		}
+
+		return array(
+			array(
+				$this->_get_label_html($input_name),
+				$this->_get_settings_html($input_name, $this->options_setting($settings))
+			)
+		);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -93,6 +121,26 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		}
 
 		return $this->_structure_options($options, $total_levels);
+	}
+
+	/**
+	 * Save element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function save_element_settings($settings)
+	{
+		$input_name = $this->class.'_options';
+
+		if (!empty($settings[$input_name]))
+		{
+			return array(
+				'options' => $this->save_options_setting($settings[$input_name])
+			);
+		}
+
+		return $settings;
 	}
 
 	/**
@@ -119,6 +167,21 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		}
 
 		return $r;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		return $this->replace_tag($data, $params, $tagdata);
 	}
 
 	// --------------------------------------------------------------------
@@ -289,69 +352,6 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 			. '<i class="instruction_text">' . lang('field_list_instructions') . '</i><br /><br />' . lang('option_setting_examples');
 	}
 
-	// Support for Content Elements Fieldtype
-
-	/**
-	 * Render the element.
-	 *
-	 * @param $data
-	 * @param array $params
-	 * @param $tagdata
-	 * @return bool
-	 */
-	function replace_element_tag($data, $params = array(), $tagdata)
-	{
-		return $this->replace_tag($data, $params, $tagdata);
-	}
-
-	/**
-	 * Display element's settings.
-	 *
-	 * @param $settings
-	 * @return array
-	 */
-	function display_element_settings($settings)
-	{
-		$input_name = $this->class.'_options';
-
-		if (isset($settings[$input_name]))
-		{
-			$settings = $settings[$input_name];
-		}
-
-		if (!empty($settings['options']))
-		{
-			$settings = $settings['options'];
-		}
-
-		return array(
-			array(
-				$this->_get_label_html($input_name),
-				$this->_get_settings_html($input_name, $this->options_setting($settings))
-			)
-		);
-	}
-
-	/**
-	 * Save element's settings.
-	 *
-	 * @param $settings
-	 * @return array
-	 */
-	function save_element_settings($settings)
-	{
-		$input_name = $this->class.'_options';
-
-		if (!empty($settings[$input_name]))
-		{
-			return array(
-				'options' => $this->save_options_setting($settings[$input_name])
-			);
-		}
-
-		return $settings;
-	}
-
 	/**
 	 * Outputs a message about how no options are set yet.
 	 *
@@ -363,28 +363,6 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		ee()->lang->loadfile('fieldpack');
 		return '<p>'.lang('no_options_set').'</p>';
 	}
-
-
-	/*
-	function validate_element($data)
-	{
-
-	}
-
-	function save_element($data)
-	{
-
-	}
-
-	function post_save_element($data)
-	{
-
-	}
-
-	function preview_element($data)
-	{
-
-	}*/
 }
 
 
