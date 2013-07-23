@@ -104,11 +104,7 @@ class Fieldpack_multiselect_ft extends Fieldpack_Multi_Fieldtype {
 		// is this a required field?
 		if ($this->settings['field_required'] == 'y' && $data =='n' )
 		{
-			// make sure there are selections
-			if (! $data)
-			{
-				return $this->EE->lang->line('required');
-			}
+			return $this->EE->lang->line('required');
 		}
 
 		return TRUE;
