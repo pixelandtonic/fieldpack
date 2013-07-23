@@ -174,6 +174,17 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 		return $this->save($data);
 	}
 
+	/**
+	 * Save Element.
+	 *
+	 * @param $data
+	 * @return mixed|string
+	 */
+	function save_element($data)
+	{
+		return $this->save($data);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -259,13 +270,8 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 	 */
 	function replace_element_tag($data, $params = array(), $tagdata)
 	{
-		if (is_array($data))
-		{
-			$data = join("\n", array_filter($data));
-		}
 
-		$data = $this->pre_process($data);
-		$data['item'] = $data;
+		$variables = $this->pre_process($data);
 
 		if (preg_match_all('/(\{values(\s.*?)?\}(.*)\{\/values\})/', $tagdata, $matches))
 		{
@@ -280,11 +286,12 @@ class Fieldpack_list_ft extends Fieldpack_Fieldtype {
 						if (strpos($parameter, '='))
 						{
 							list ($key, $value) = explode("=", $parameter);
-							$params[$key] = $value;
+							$params[$key] = trim($value, "'" . '"');
 						}
 					}
 				}
-				$tagdata = str_replace($matches[1][$index], $this->replace_tag($data, $params, $matches[3][$index]), $tagdata);
+				$replace = $this->replace_tag($variables, $params, $matches[3][$index]);
+				$tagdata = str_replace($matches[1][$index], $replace, $tagdata);
 			}
 		}
 
