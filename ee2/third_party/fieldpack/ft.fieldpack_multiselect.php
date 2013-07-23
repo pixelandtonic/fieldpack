@@ -97,6 +97,17 @@ class Fieldpack_multiselect_ft extends Fieldpack_Multi_Fieldtype {
 	}
 
 	/**
+	 * Save Element.
+	 *
+	 * @param $data
+	 * @return mixed|string
+	 */
+	function save_element($data)
+	{
+		return $this->save($data);
+	}
+
+	/**
 	 * Validate
 	 */
 	function validate($data)

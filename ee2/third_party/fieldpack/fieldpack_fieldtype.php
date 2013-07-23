@@ -172,21 +172,6 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Render the element.
-	 *
-	 * @param $data
-	 * @param array $params
-	 * @param $tagdata
-	 * @return bool
-	 */
-	function replace_element_tag($data, $params = array(), $tagdata)
-	{
-		return $this->replace_tag($data, $params, $tagdata);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Validate
 	 */
 	function validate($data)
@@ -220,6 +205,21 @@ class Fieldpack_Fieldtype extends EE_Fieldtype {
 		}
 
 		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		return $this->replace_tag($data, $params, $tagdata);
 	}
 
 	// --------------------------------------------------------------------
@@ -675,4 +675,41 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 		return $data ? (string) count($data) : '0';
 	}
 
+	/**
+	 * Render the element.
+	 *
+	 * @param $data
+	 * @param array $params
+	 * @param $tagdata
+	 * @return bool
+	 */
+	function replace_element_tag($data, $params = array(), $tagdata)
+	{
+
+		$variables = $this->pre_process($data);
+
+		if (preg_match_all('/(\{values(\s.*?)?\}(.*)\{\/values\})/', $tagdata, $matches))
+		{
+			foreach ($matches[1] as $index => $matched_markup)
+			{
+				$params = array();
+				if (!empty($matches[2][$index]))
+				{
+					$parameters = array_filter(preg_split("/\s/", $matches[2][$index]));
+					foreach ($parameters as $parameter)
+					{
+						if (strpos($parameter, '='))
+						{
+							list ($key, $value) = explode("=", $parameter);
+							$params[$key] = trim($value, "'" . '"');
+						}
+					}
+				}
+				$replace = $this->replace_tag($variables, $params, $matches[3][$index]);
+				$tagdata = str_replace($matches[1][$index], $replace, $tagdata);
+			}
+		}
+
+		return $tagdata;
+	}
 }

@@ -82,6 +82,37 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 	}
 
 	/**
+	 * Display element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function display_element_settings($settings)
+	{
+		if (!empty($settings['pt_switch']))
+		{
+			$settings = $settings['pt_switch'];
+		}
+
+		$rows = $this->_field_settings($settings);
+
+		foreach ($rows as &$row)
+		{
+			// Smash it all together in a glorious HTML string
+			$out = '';
+			foreach ($row as $field)
+			{
+				$out .= $field;
+			}
+			$row = array($out);
+		}
+
+		$this->_include_theme_css('styles/switch.css');
+
+		return $rows;
+	}
+
+	/**
 	 * Field Settings
 	 */
 	private function _field_settings($data, $attr = '')
@@ -164,6 +195,24 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 		return $this->EE->input->post('pt_switch');
 	}
 
+	/**
+	 * Save element's settings.
+	 *
+	 * @param $settings
+	 * @return array
+	 */
+	function save_element_settings($settings)
+	{
+		$input_name = 'pt_switch';
+
+		if (!empty($settings[$input_name]))
+		{
+			$settings = $settings[$input_name];
+		}
+
+		return $settings;
+	}
+	
 	// --------------------------------------------------------------------
 
 	/**
@@ -230,6 +279,19 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 		return $this->display_field($data);
 	}
 
+	/**
+	 * Display the element.
+	 *
+	 * @param $data
+	 * @return mixed
+	 */
+	function display_element($data)
+	{
+		$this->_include_ce_icon('switch');
+		$this->_include_theme_js('scripts/switch_ce.js');
+		return $this->display_field($data);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -245,74 +307,6 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 		{
 			return $this->settings['off_label'];
 		}
-	}
-
-
-
-	// Support for Content Elements Fieldtype
-
-	/**
-	 * Save element's settings.
-	 *
-	 * @param $settings
-	 * @return array
-	 */
-	function save_element_settings($settings)
-	{
-		$input_name = 'pt_switch';
-
-		if (!empty($settings[$input_name]))
-		{
-			$settings = $settings[$input_name];
-		}
-
-		return $settings;
-	}
-
-	/**
-	 * Display element's settings.
-	 *
-	 * @param $settings
-	 * @return array
-	 */
-	function display_element_settings($settings)
-	{
-		if (!empty($settings['pt_switch']))
-		{
-			$settings = $settings['pt_switch'];
-		}
-
-		$rows = $this->_field_settings($settings);
-
-		foreach ($rows as &$row)
-		{
-			// Smash it all together in a glorious HTML string
-			$out = '';
-			foreach ($row as $field)
-			{
-				$out .= $field;
-			}
-			$row = array($out);
-		}
-
-		$this->_include_theme_css('styles/switch.css');
-
-		return $rows;
-	}
-
-	// Support for Content Elements Fieldtype
-
-	/**
-	 * Display the element.
-	 *
-	 * @param $data
-	 * @return mixed
-	 */
-	function display_element($data)
-	{
-		$this->_include_ce_icon('switch');
-		$this->_include_theme_js('scripts/switch_ce.js');
-		return $this->display_field($data);
 	}
 
 	/**

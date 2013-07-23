@@ -127,6 +127,17 @@ class Fieldpack_checkboxes_ft extends Fieldpack_Multi_Fieldtype {
 		return $this->save($data);
 	}
 
+	/**
+	 * Save Element.
+	 *
+	 * @param $data
+	 * @return mixed|string
+	 */
+	function save_element($data)
+	{
+		return $this->save($data);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
