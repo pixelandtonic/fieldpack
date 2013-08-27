@@ -15,7 +15,7 @@ if (! defined('PT_FIELDPACK_VER'))
  * @author    Pixel & Tonic Inc. <support@pixelandtonic.com>
  * @copyright Copyright (c) 2013 Pixel & Tonic, Inc
  */
-class Fieldpack_Fieldtype extends EE_Fieldtype {
+abstract class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 	var $unserialize_data = FALSE;
 
