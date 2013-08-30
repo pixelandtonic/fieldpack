@@ -145,7 +145,8 @@ class Fieldpack_radio_buttons_ft extends Fieldpack_Multi_Fieldtype {
 
 		$replace = array(
 			'value' => $value,
-			'label' => $label
+			'label' => $label,
+			'element_name' => $this->element_name
 		);
 
 		return $this->EE->functions->var_swap($tagdata, $replace);

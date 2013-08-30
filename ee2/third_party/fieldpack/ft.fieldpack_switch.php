@@ -320,7 +320,8 @@ class Fieldpack_switch_ft extends Fieldpack_Fieldtype {
 	function replace_element_tag($data, $params = array(), $tagdata)
 	{
 		$data = array(
-			'value' => $data
+			'value' => $data,
+			'element_name' => $this->element_name
 		);
 		return $this->EE->functions->var_swap($tagdata, $data);
 	}

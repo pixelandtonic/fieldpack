@@ -714,6 +714,10 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 			}
 		}
 
-		return $tagdata;
+		return $this->EE->functions->var_swap($tagdata,
+			array(
+	    		'element_name' => $this->element_name
+			)
+		);
 	}
 }

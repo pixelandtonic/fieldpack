@@ -305,7 +305,8 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 
 		$replace = array(
 			'value' => $value,
-			'label' => $label
+			'label' => $label,
+			'element_name' => $this->element_name
 		);
 
 		return $this->EE->functions->var_swap($tagdata, $replace);
