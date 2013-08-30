@@ -2,7 +2,7 @@
 
 if (! defined('FIELDPACK_VER'))
 {
-	define('FIELDPACK_VER',  '2.1.1');
+	define('FIELDPACK_VER',  '2.1.2');
 }
 
 $config['name']    = 'P&T Field Pack';
