@@ -35,7 +35,7 @@ ptList = function($ul){
 				if (val) {
 					val = val.replace(/"/g, '\"');
 					var $li = $('<li><span>'+val+'</span></li>').insertBefore($lastLi),
-					 	$hidden = $('<input type="hidden" name="'+name+'" value="'+val+'" />').appendTo($li);
+					 	$hidden = $('<input type="hidden" name="'+name+'" />').val(val).appendTo($li);
 					new ptListItem($li, $input);
 					initSortable();
 				}
