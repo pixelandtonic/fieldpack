@@ -75,15 +75,18 @@ class Fieldpack_helper
 			if (is_array($settings))
 			{
 				$new_types = array();
-				foreach ($settings['enabled_types'] as $type)
+				if (isset($settings['enabled_types']))
 				{
-					if ($type != $from)
+					foreach ($settings['enabled_types'] as $type)
 					{
-						$new_types[] = $type;
-					}
-					else
-					{
-						$perform_update = TRUE;
+						if ($type != $from)
+						{
+							$new_types[] = $type;
+						}
+						else
+						{
+							$perform_update = TRUE;
+						}
 					}
 				}
 
