@@ -608,19 +608,7 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 			{
 				if (($option = $this->_find_option($option_name, $this->settings['options'])) !== FALSE)
 				{
-					// copy $tagdata
-					$option_tagdata = $tagdata;
-
-					// simple var swaps
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option', $option, $option_tagdata);
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option_name', $option_name, $option_tagdata);
-
-					// seems there was a mix-up in the documentation and things where ambiguous. Let's make it crystal clear.
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option_value', $option_name, $option_tagdata);
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option_label', $option, $option_tagdata);
-
-					// parse {switch} and {count} tags
-					$this->parse_iterators($option_tagdata);
+					$option_tagdata = $this->_parse_options($option, $option_name, $tagdata);
 
 					$r .= $option_tagdata;
 				}
@@ -719,5 +707,48 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 	    		'element_name' => $this->element_name
 			)
 		);
+	}
+
+	public function replace_all_options($data = "", $params = array(), $tagdata = "")
+	{
+		$r = '';
+
+		$this->prep_iterators($tagdata);
+
+		foreach($this->settings['options'] as $value => $label)
+		{
+			$r .= $this->_parse_options($label, $value, $tagdata);
+		}
+
+		if (isset($params['backspace']) && $params['backspace'])
+		{
+			$r = substr($r, 0, -$params['backspace']);
+		}
+
+		return $r;
+	}
+
+	/**
+	 * Parse option tag data.
+	 *
+	 * @param $option
+	 * @param $option_name
+	 * @param $option_tagdata
+	 * @return mixed
+	 */
+	protected function _parse_options($option, $option_name, $option_tagdata)
+	{
+		// simple var swaps
+		$option_tagdata = $this->EE->TMPL->swap_var_single('option', $option, $option_tagdata);
+		$option_tagdata = $this->EE->TMPL->swap_var_single('option_name', $option_name, $option_tagdata);
+
+		// seems there was a mix-up in the documentation and things where ambiguous. Let's make it crystal clear.
+		$option_tagdata = $this->EE->TMPL->swap_var_single('option_value', $option_name, $option_tagdata);
+		$option_tagdata = $this->EE->TMPL->swap_var_single('option_label', $option, $option_tagdata);
+
+		// parse {switch} and {count} tags
+		$this->parse_iterators($option_tagdata);
+
+		return $option_tagdata;
 	}
 }
