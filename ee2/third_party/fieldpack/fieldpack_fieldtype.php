@@ -245,7 +245,7 @@ abstract class Fieldpack_Fieldtype extends EE_Fieldtype {
 	{
 		global $FNS;
 
-		$marker = LD.'SWITCH['.$FNS->random('alpha', 8).']SWITCH'.RD;
+		$marker = LD.'SWITCH['.ee()->functions->random('alpha', 8).']SWITCH'.RD;
 		$this->_switches[] = array('marker' => $marker, 'options' => explode('|', $match[2]));
 		return $marker;
 	}
