@@ -680,7 +680,7 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 
 		$variables = $this->pre_process($data);
 
-		if (preg_match_all('/(\{values(\s.*?)?\}(.*)\{\/values\})/', $tagdata, $matches))
+		if (preg_match_all('/(\{values(\s.*?)?\}(.*)\{\/values\})/s', $tagdata, $matches))
 		{
 			foreach ($matches[1] as $index => $matched_markup)
 			{
