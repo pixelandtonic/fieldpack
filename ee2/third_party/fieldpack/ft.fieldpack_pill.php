@@ -129,8 +129,11 @@ class Fieldpack_pill_ft extends Fieldpack_Fieldtype {
 			{
 				if ($r !== '') $r .= "\n";
 				$r .= $name;
-				if ($name !== $label) $r .= ' : '.$label;
-				if (isset($settings['default']) && $settings['default'] == $name) $r .= ' *';
+				if (!is_array($label))
+				{
+					if ($name !== $label) $r .= ' : '.$label;
+					if (isset($settings['default']) && $settings['default'] == $name) $r .= ' *';
+				}
 			}
 		}
 
