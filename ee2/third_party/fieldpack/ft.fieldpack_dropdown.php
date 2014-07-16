@@ -1,11 +1,9 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 if (! class_exists('Fieldpack_Fieldtype'))
 {
 	require PATH_THIRD.'fieldpack/fieldpack_fieldtype.php';
 }
-
 
 /**
  * Field Pack - Dropdown Class
@@ -17,12 +15,30 @@ if (! class_exists('Fieldpack_Fieldtype'))
 class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 
 	var $info = array(
-		'name'     => 'Field Pack - Dropdown',
-		'version'  => FIELDPACK_VER
+		'name'    => 'Field Pack - Dropdown',
+		'version' => FIELDPACK_VER
 	);
 
 	var $class = 'fieldpack_dropdown';
 	var $total_option_levels = 2;
+
+	/**
+	 * Fieldtype Constructor
+	 */
+	function __construct()
+	{
+		parent::__construct();
+
+		/** ----------------------------------------
+		/**  Prepare Cache
+		/** ----------------------------------------*/
+
+		if (! isset($this->EE->session->cache['fieldpack_dropdown']))
+		{
+			$this->EE->session->cache['fieldpack_dropdown'] = array('includes' => array());
+		}
+		$this->cache =& $this->EE->session->cache['fieldpack_dropdown'];
+	}
 
 	// --------------------------------------------------------------------
 
@@ -69,6 +85,8 @@ class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 		{
 			return $this->no_options_set();
 		}
+
+		$this->_include_theme_css('styles/dropdown.css');
 
 		$this->prep_field_data($data);
 
@@ -145,8 +163,7 @@ class Fieldpack_dropdown_ft extends Fieldpack_Multi_Fieldtype {
 
 		$replace = array(
 			'value' => $value,
-			'label' => $label,
-			'element_name' => $this->element_name
+			'label' => $label
 		);
 
 		return $this->EE->functions->var_swap($tagdata, $replace);
