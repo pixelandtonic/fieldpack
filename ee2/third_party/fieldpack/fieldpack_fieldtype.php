@@ -50,13 +50,19 @@ abstract class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 			foreach ($options as $name => $label)
 			{
-				if ($r !== '') $r .= "\n";
+				if ($r !== '')
+				{
+					$r .= "\n";
+				}
 
 				// force string
 				$name = (string) $name;
 
 				// is this just a blank option?
-				if ($name === '' && $label === '') $name = $label = ' ';
+				if ($name === '' && $label === '')
+				{
+					$name = $label = ' ';
+				}
 
 				$r .= $indent . htmlentities($name, ENT_COMPAT, 'UTF-8');
 
@@ -112,6 +118,7 @@ abstract class Fieldpack_Fieldtype extends EE_Fieldtype {
 	{
 		// prepare options
 		$options = preg_split('/[\r\n]+/', $options);
+
 		foreach($options as &$option)
 		{
 			$option_parts = preg_split('/\s:\s/', $option, 2);
@@ -247,6 +254,7 @@ abstract class Fieldpack_Fieldtype extends EE_Fieldtype {
 
 		$marker = LD.'SWITCH['.ee()->functions->random('alpha', 8).']SWITCH'.RD;
 		$this->_switches[] = array('marker' => $marker, 'options' => explode('|', $match[2]));
+
 		return $marker;
 	}
 
@@ -463,8 +471,8 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 	{
 		// replace quotes
 		$settings['options'] = str_replace('"', '&quot;', $settings['options']);
-
 		$settings['options'] = $this->save_options_setting($settings['options'], $this->total_option_levels);
+
 		return $settings;
 	}
 
@@ -488,7 +496,10 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 
 				$data = FF2EE2::_unserialize($data);
 
-				if (is_array($data)) return;
+				if (is_array($data))
+				{
+					return;
+				}
 			}
 
 			$data = array_filter(preg_split("/[\r\n]+/", $data));
@@ -502,7 +513,10 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 	 */
 	function display_field($data)
 	{
-		if (is_string($data)) $data = html_entity_decode($data);
+		if (is_string($data))
+		{
+			$data = html_entity_decode($data);
+		}
 
 		return $this->_display_field($data, $this->field_name);
 	}
@@ -545,11 +559,13 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 		foreach ($haystack as $key => $value)
 		{
 			$r = $value;
+
 			if ($needle == $key OR (is_array($value) AND (($r = $this->_find_option($needle, $value)) !== FALSE)))
 			{
 				return $r;
 			}
 		}
+
 		return FALSE;
 	}
 
@@ -697,9 +713,11 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 			foreach ($matches[1] as $index => $matched_markup)
 			{
 				$params = array();
+
 				if (!empty($matches[2][$index]))
 				{
 					$parameters = array_filter(preg_split("/\s/", $matches[2][$index]));
+
 					foreach ($parameters as $parameter)
 					{
 						if (strpos($parameter, '='))
@@ -709,6 +727,7 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 						}
 					}
 				}
+
 				$replace = $this->replace_tag($variables, $params, $matches[3][$index]);
 				$tagdata = str_replace($matches[1][$index], $replace, $tagdata);
 			}
