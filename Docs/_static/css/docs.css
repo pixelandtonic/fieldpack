@@ -16,6 +16,8 @@ p:not(:last-child) { margin-bottom: 1em; }
 em { font-style: italic; }
 strong { font-weight: bold; }
 
+.reference em { font-style: normal; }
+
 a { color: #af3131; }
 a:hover:not(.sel) { text-decoration: underline; }
 
