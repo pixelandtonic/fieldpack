@@ -1,4 +1,4 @@
-var ptPill
+var ptPill;
 
 (function($){
 
