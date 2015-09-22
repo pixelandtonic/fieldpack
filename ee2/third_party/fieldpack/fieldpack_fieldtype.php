@@ -739,4 +739,22 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 			)
 		);
 	}
+
+	/**
+	 * Validate
+	 */
+	function validate($data)
+	{
+		// is this a required field?
+		if ($this->settings['field_required'] == 'y')
+		{
+			// make sure there are selections
+			if (! $data || (!is_array($data) && $data == 'n'))
+			{
+				return lang('required');
+			}
+		}
+
+		return TRUE;
+	}
 }
