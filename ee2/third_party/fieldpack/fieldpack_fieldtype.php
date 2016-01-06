@@ -526,6 +526,11 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 	 */
 	function display_cell($data)
 	{
+		if ($data)
+		{
+			$data = htmlspecialchars_decode($data, ENT_QUOTES);
+		}
+
 		return $this->_display_field($data, $this->cell_name);
 	}
 
