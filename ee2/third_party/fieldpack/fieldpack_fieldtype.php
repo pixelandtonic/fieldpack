@@ -632,13 +632,14 @@ class Fieldpack_Multi_Fieldtype extends Fieldpack_Fieldtype {
 					// copy $tagdata
 					$option_tagdata = $tagdata;
 
-					// simple var swaps
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option', $option, $option_tagdata);
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option_name', $option_name, $option_tagdata);
 
-					// seems there was a mix-up in the documentation and things where ambiguous. Let's make it crystal clear.
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option_value', $option_name, $option_tagdata);
-					$option_tagdata = $this->EE->TMPL->swap_var_single('option_label', $option, $option_tagdata);
+					// this will replace the tags and parse conditionals
+					$option_tagdata = $this->EE->TMPL->parse_variables_row($option_tagdata, array(
+						'option' => $option,
+						'option_name' => $option_name,
+						'option_value' => $option_name,
+						'option_label' => $option,
+					));
 
 					// parse {switch} and {count} tags
 					$this->parse_iterators($option_tagdata);
